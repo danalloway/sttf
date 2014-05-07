@@ -68,10 +68,18 @@ module.exports = {
     },
 
     matches: function(req, res) {
-        Match.find().sort(function() { return 0.5 - Math.random(); })
+        Match.find().sort({ createdAt: 'desc' })
             .populate('winner').populate('loser').populate('challenger').populate('defender')
             .exec(function (err, matches) {
                 res.view('matches', { matches: matches });
+        });
+    },
+
+    roster: function(req, res) {
+        Player.find().sort('firstName ASC').exec(function (err, players) {
+            if (!err) {
+                res.view('roster', { players: players });
+            }
         });
     }
 

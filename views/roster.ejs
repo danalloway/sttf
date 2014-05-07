@@ -1,0 +1,23 @@
+<h1>Player Roster</h1>
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover players">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Nickname</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% _.each(players, function (player) { %>
+        <tr>
+          <td><%= player.firstName %></td>
+          <td><%= player.lastName %></td>
+          <td><%= player.nickname.toUpperCase() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

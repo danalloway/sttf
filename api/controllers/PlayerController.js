@@ -9,7 +9,7 @@ module.exports = {
 
     create: function(req, res) {
 
-        Player.create(req.body).done(function (err, saved) {
+        Player.create(req.body).exec(function (err, saved) {
 
             if (err) {
                 console.log(err);

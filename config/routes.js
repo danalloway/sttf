@@ -58,6 +58,11 @@ module.exports.routes = {
     'get /matches': {
         controller: 'site',
         action: 'matches'
+    },
+
+    'get /roster': {
+        controller: 'site',
+        action: 'roster'
     }
 
     // Custom routes here...

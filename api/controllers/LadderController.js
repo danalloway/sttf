@@ -1,10 +1,10 @@
 /**
- * LadderController.js 
+ * LadderController.js
  *
  * @description ::
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
 module.exports = {
-	
+
 };
