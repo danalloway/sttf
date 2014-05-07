@@ -1,0 +1,68 @@
+<h1>Record Your Match</h1>
+<hr>
+
+<form class="form-horizontal col-sm-10 col-sm-offset-1" action="/record" method="POST">
+
+  <fieldset>
+
+    <legend>Log the details of your completed match.</legend>
+
+    <div class="form-group row">
+
+      <div class="col-xs-6">
+        <select class="form-control" name="challenger">
+          <option value="challenger">Challenger</option>
+          <% _.each(players, function (player) { %>
+            <option value="<%= player.id %>"><%= player.firstName %> &quot;<%= player.nickname.toUpperCase() %>&quot; <%= player.lastName %></option>
+          <%}) %>
+        </select>
+      </div>
+
+      <div class="col-xs-6">
+        <select class="form-control" name="defender">
+          <option value="defender">Defender</option>
+          <% _.each(players, function (player) { %>
+            <option value="<%= player.id %>"><%= player.firstName %> &quot;<%= player.nickname.toUpperCase() %>&quot; <%= player.lastName %></option>
+          <%}) %>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-4 col-xs-offset-1">
+        <input type="text" class="form-control" name="challenger_game1" placeholder="Game #1">
+      </div>
+      <div class="col-xs-4 col-xs-offset-2">
+        <input type="text" class="form-control" name="defender_game1" placeholder="Game #1">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-4 col-xs-offset-1">
+        <input type="text" class="form-control" name="challenger_game2" placeholder="Game #2">
+      </div>
+      <div class="col-xs-4 col-xs-offset-2">
+        <input type="text" class="form-control" name="defender_game2" placeholder="Game #2">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-4 col-xs-offset-1">
+        <input type="text" class="form-control" name="challenger_game3" placeholder="Game #3">
+      </div>
+      <div class="col-xs-4 col-xs-offset-2">
+        <input type="text" class="form-control" name="defender_game3" placeholder="Game #3">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg pull-right"><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;Record</button>
+      </div>
+    </div>
+
+  </fieldset>
+
+</form>

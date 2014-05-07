@@ -1,0 +1,12 @@
+<% if (req.session.flash) {
+
+    Object.keys(req.session.flash).forEach(function (key) { %>
+
+        <div class="alert alert-dismissable alert-<%- key %>">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <%- req.flash(key) %>
+        </div>
+
+    <% });
+
+} %>

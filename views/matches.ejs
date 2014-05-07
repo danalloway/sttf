@@ -1,0 +1,29 @@
+<h1>Matches</h1>
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover matches">
+    <thead>
+      <tr>
+        <th>Challenger</th>
+        <th>Defender</th>
+        <th>Game 1</th>
+        <th>Game 2</th>
+        <th>Game 3</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% _.each(matches, function (match) { var date = new Date(match.createdAt); %>
+        <tr>
+          <td class="<% if (match.winner.id == match.challenger.id) { %>success<% } %>"><%= match.challenger.nickname %></td>
+          <td class="<% if (match.winner.id == match.defender.id)   { %>success<% } %>"><%= match.defender.nickname   %></td>
+          <td><%= match.challenger_game1 %> to <%= match.defender_game1 %></td>
+          <td><%= match.challenger_game2 %> to <%= match.defender_game2 %></td>
+          <td><%= match.challenger_game3 %> to <%= match.defender_game3 %></td>
+          <td><%= date.toDateString() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
