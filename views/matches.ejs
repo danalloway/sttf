@@ -16,8 +16,8 @@
     <tbody>
       <% _.each(matches, function (match) { var date = new Date(match.createdAt); %>
         <tr>
-          <td class="<% if (match.winner.id == match.challenger.id) { %>success<% } %>"><%= match.challenger.nickname %></td>
-          <td class="<% if (match.winner.id == match.defender.id)   { %>success<% } %>"><%= match.defender.nickname   %></td>
+          <td class="<% if (match.winner.id == match.challenger.id) { %>success<% } %>"><%= match.challenger.firstName.substring(0,1) %>. "<%= match.challenger.nickname %>" <%= match.challenger.lastName %></td>
+          <td class="<% if (match.winner.id == match.defender.id)   { %>success<% } %>"><%= match.defender.firstName.substring(0,1) %>. "<%= match.defender.nickname   %>" <%= match.defender.lastName %></td>
           <td><%= match.challenger_game1 %> to <%= match.defender_game1 %></td>
           <td><%= match.challenger_game2 %> to <%= match.defender_game2 %></td>
           <td>
