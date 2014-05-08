@@ -1,3 +1,3 @@
-# sttf
+# S.T.T.F (Snagajob Table Tennis Federation)
 
-a [Sails](http://sailsjs.org) application
+A [NodeJS](http://nodejs.org/) application built on [SailsJS](http://sailsjs.org/) over [MongoDB](mongodb.org).
