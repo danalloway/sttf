@@ -56,8 +56,17 @@ module.exports = {
         else {
             Needle.post('http://localhost:1337/match', req.body, function (err, resp, match) {
                 if (!err && resp.statusCode == 200) {
+                    // Needle.post('https://slack.com/api/chat.postMessage', {
+                    //     token: 'xoxp-2185159850-2185163468-2330633795-e85e29',
+                    //     channel: '#sttf',
+                    //     username: 'Pong Bot',
+                    //     parse: 'full',
+                    //     pretty: 1,
+                    //     text: match.winner + ' bests ' + match.loser + '!';
+                    // });
+
                     req.flash('success', 'Your match has been RECORDED!');
-                    res.redirect('/');
+                    res.redirect('/matches');
                 }
                 else {
                     req.flash('danger', 'The S.T.T.F minions didnt like that, try again!');
