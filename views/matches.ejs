@@ -19,14 +19,14 @@
           <td>
             <%= match.challenger.firstName.substring(0,1) %>. "<%= match.challenger.nickname %>" <%= match.challenger.lastName %>
             <% if (match.winner.id == match.challenger.id) { %>
-              <i class="glyphicon glyphicon-ok" style="color:#0f0"></i>
+              <i class="glyphicon glyphicon-ok" style="color: green;"></i>
             <% } %>
           </td>
           <td>
             <%= match.defender.firstName.substring(0,1) %>. "<%= match.defender.nickname   %>" <%= match.defender.lastName %>
             <% if (match.winner.id == match.defender.id) { %>
               <i class="glyphicon glyphicon-ok" style="color: green;"></i>
-              <i class="glyphicon glyphicon-arrow-up" style="color:#0f0"></i>
+              <i class="glyphicon glyphicon-arrow-up" style="color: green;"></i>
             <% } %>
           </td>
           <td><%= match.challenger_game1 %>-<%= match.defender_game1 %></td>
