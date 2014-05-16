@@ -8,6 +8,7 @@
 module.exports = {
 
     create: function(req, res) {
+        var moment = require('moment');
 
         Match.create(req.body).exec(function (err, saved) {
 

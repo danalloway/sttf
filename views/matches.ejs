@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <% _.each(matches, function (match) { var date = new Date(match.createdAt); %>
+      <% _.each(matches, function (match) { %>
         <tr>
           <td>
             <%= match.challenger.firstName.substring(0,1) %>. "<%= match.challenger.nickname %>" <%= match.challenger.lastName %>
@@ -36,7 +36,7 @@
              <%= match.challenger_game3 %>-<%= match.defender_game3 %>
             <% } %>
           </td>
-          <td><%= date.toDateString() %></td>
+          <td><%= utility.formatDate(match.createdAt, "MMM DD") %></td>
         </tr>
       <% }) %>
     </tbody>
