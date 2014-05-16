@@ -17,14 +17,14 @@
       <% _.each(matches, function (match) { %>
         <tr>
           <td>
-            <%= match.challenger.firstName.substring(0,1) %>. "<%= match.challenger.nickname %>" <%= match.challenger.lastName %>
+            &quot;<%= match.challenger.nickname %>&quot; <%= match.challenger.lastName %>
             <% if (match.winner.id == match.challenger.id) { %>
               <i class="glyphicon glyphicon-ok" style="color: green;"></i>
               <i class="glyphicon glyphicon-arrow-up" style="color: green;"></i>
             <% } %>
           </td>
           <td>
-            <%= match.defender.firstName.substring(0,1) %>. "<%= match.defender.nickname   %>" <%= match.defender.lastName %>
+            &quot;<%= match.defender.nickname   %>&quot; <%= match.defender.lastName %>
             <% if (match.winner.id == match.defender.id) { %>
               <i class="glyphicon glyphicon-ok" style="color: green;"></i>
             <% } %>
@@ -36,7 +36,7 @@
              <%= match.challenger_game3 %>-<%= match.defender_game3 %>
             <% } %>
           </td>
-          <td><%= utility.formatDate(match.createdAt, "MMM DD") %></td>
+          <td><%= utility.formatDate(match.createdAt, "MMM Do") %></td>
         </tr>
       <% }) %>
     </tbody>
