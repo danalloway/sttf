@@ -36,7 +36,7 @@
              <%= match.challenger_game3 %>-<%= match.defender_game3 %>
             <% } %>
           </td>
-          <td><%= date.toDateString() %></td>
+          <td><%= date.toDateString().substring(0,10) %></td>
         </tr>
       <% }) %>
     </tbody>
