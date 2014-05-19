@@ -63,6 +63,16 @@ module.exports.routes = {
     'get /roster': {
         controller: 'site',
         action: 'roster'
+    },
+
+    'get /login': {
+        controller: 'site',
+        action: 'login'
+    },
+
+    'post /login': {
+        controller: 'site',
+        action: 'postAuth'
     }
 
     // Custom routes here...

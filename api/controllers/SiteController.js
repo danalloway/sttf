@@ -87,7 +87,8 @@ module.exports = {
     login: function(req, res) {
         res.view('login');
     },
-    auth: function(req, res) {
+
+    postAuth: function(req, res) {
         var bcrypt = require('bcrypt');
 
         User.findOneByUsername(req.body.username).exec(function (err, user) {
@@ -97,15 +98,21 @@ module.exports = {
                         req.session.user = user;
                         req.session.authenticated = true;
                         req.flash('success', 'You have been logged in!');
-                        res.redirect('/');
+                        res.view('home');
+                    }
+                    else {
+                        req.flash('danger', 'The S.T.T.F minions didnt like that, try again!');
+                        res.view('login');
                     }
                 });
             }
+            else {
+                req.flash('danger', 'The S.T.T.F minions didnt like that, try again!');
+                res.view('login');
+            }
         });
-
-        req.flash('danger', 'The S.T.T.F minions didnt like that, try again!');
-        res.redirect('/login');
     },
+
     logout: function (req,res){
         req.session.authenticated = null;
         req.session.destroy();
