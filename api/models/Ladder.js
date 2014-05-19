@@ -9,18 +9,19 @@ module.exports = {
 
     attributes: {
 
-        match: {
+        match_event: {
             model: 'Match'
         },
 
-        player: {
+        player_event: {
             model: 'Player'
-       }
+        },
 
-        // standings: {
-        //     collection: 'Player'
-        // }
+        standings: {
+            collection: 'Player',
+            via: 'standing'
+        }
 
-    },
+    }
 
 };

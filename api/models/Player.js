@@ -8,6 +8,7 @@
 module.exports = {
 
     attributes: {
+
         firstName: {
             type: 'string',
             required: true
@@ -29,6 +30,7 @@ module.exports = {
             required: true,
             unique: true
         }
+
     }
 
 };

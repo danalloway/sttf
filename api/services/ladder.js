@@ -5,8 +5,12 @@ exports.updateFromMatch = function(match) {
 
     Ladder.find().limit(1).sort('createdAt').exec(function (err, currentLadder) {
 
+        // @debug
+        console.log(currentLadder);
+
+
         // the current ladder
-        var currentLadder = currentLadder.players;
+        var currentLadder = currentLadder.standings;
 
 
         // the updated order of the ladder
@@ -48,24 +52,17 @@ exports.updateFromMatch = function(match) {
         }
 
         Ladder.create({
-            match: match.id,
-            players: updatedLadder
-        }).done(function (err, saved) {
-            if (err) {
-                console.log(err);
+            match_event: match.id,
+        }).exec(function (err, saved) {
+            if (!err && saved) {
+                for (var i = 0; i < updatedLadder.length; i++) {
+                    saved.standings.add(updatedLadder[i]);
+                };
+
+                saved.save(console.log);
             }
         });
 
     });
-
-}
-
-
-/**
- * Update the ladder based on a new player / removed player.
- */
-exports.updateFromPlayer = function(player) {
-
-
 
 }
