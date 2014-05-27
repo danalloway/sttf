@@ -5,7 +5,7 @@ A [NodeJS](http://nodejs.org/) application built on [SailsJS](http://sailsjs.org
 ## INSTALL
 - Install MongoDB
 - Install NodeJS
-- Install SailsJS globally via `sudo npm -g install sails`
+- Install SailsJS beta (0.10+) globally via `sudo npm -g install sails@beta`
 - Clone this repository locally
 - Run `npm install` in the newely cloned directory
 - Run `sails lift` to start the app
