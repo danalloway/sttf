@@ -15,11 +15,6 @@ module.exports = {
 
         player_event: {
             model: 'Player'
-        },
-
-        standings: {
-            collection: 'Player',
-            via: 'standing'
         }
 
     }
