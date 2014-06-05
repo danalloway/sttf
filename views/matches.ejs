@@ -22,12 +22,14 @@
               <i class="glyphicon glyphicon-ok" style="color: green;"></i>
               <i class="glyphicon glyphicon-arrow-up" style="color: green;"></i>
             <% } %>
+              <i class="glyphicon glyphicon-filter" style="color: grey;display:none;"></i>
           </td>
           <td data-player-id="<%= match.defender.id %>">
             &quot;<%= match.defender.nickname   %>&quot; <%= match.defender.lastName %>
             <% if (match.winner.id == match.defender.id) { %>
               <i class="glyphicon glyphicon-ok" style="color: green;"></i>
             <% } %>
+            <i class="glyphicon glyphicon-filter" style="color: grey;display:none;"></i>
           </td>
           <td><%= match.challenger_game1 %>-<%= match.defender_game1 %></td>
           <td><%= match.challenger_game2 %>-<%= match.defender_game2 %></td>
