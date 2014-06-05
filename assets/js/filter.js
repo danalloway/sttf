@@ -1,12 +1,10 @@
 $(document).ready(function(){
-	$("i.glyphicon-filter").each(function(){
-		$(this).click(function(){
-			var id = $(this).parent().data("player-id");
-			$("table.matches tbody tr").hide();
-			$('table.matches').find("[data-player-id=" + id + "]").each(function(){
-				$(this).parent().show();
-			});
-		});		
+    $(document).on( 'click', '.glyphicon-filter', function(){
+		var id = $(this).parent().data("player-id");
+		$("table.matches tbody tr").hide();
+		$('table.matches').find("[data-player-id=" + id + "]").each(function(){
+			$(this).parent().show();
+		});
 	});
 	
 	$('table.matches td').each(function(){	
