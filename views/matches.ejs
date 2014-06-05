@@ -16,14 +16,14 @@
     <tbody>
       <% _.each(matches, function (match) { %>
         <tr>
-          <td>
+          <td data-player-id="<%= match.challenger.id %>">
             &quot;<%= match.challenger.nickname %>&quot; <%= match.challenger.lastName %>
             <% if (match.winner.id == match.challenger.id) { %>
               <i class="glyphicon glyphicon-ok" style="color: green;"></i>
               <i class="glyphicon glyphicon-arrow-up" style="color: green;"></i>
             <% } %>
           </td>
-          <td>
+          <td data-player-id="<%= match.defender.id %>">
             &quot;<%= match.defender.nickname   %>&quot; <%= match.defender.lastName %>
             <% if (match.winner.id == match.defender.id) { %>
               <i class="glyphicon glyphicon-ok" style="color: green;"></i>
