@@ -73,7 +73,12 @@ module.exports.routes = {
     'post /login': {
         controller: 'site',
         action: 'postAuth'
-    }
+    },
+    
+    'get /live-feed': {
+        controller: 'site',
+        action: 'livefeed'
+    },
 
     // Custom routes here...
 

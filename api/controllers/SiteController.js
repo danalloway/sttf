@@ -118,6 +118,11 @@ module.exports = {
         req.session.destroy();
         req.flash('success', 'You have been logged out!');
         res.redirect('/');
-    }
+    },
+    
+    // live feed
+    livefeed: function(req, res) {
+        res.view('live-feed');
+    },
 
 };
