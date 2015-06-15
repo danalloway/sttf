@@ -7,7 +7,7 @@
   page('/live', live);
   page('/roster', roster);
   page('/', function(){
-    page.redirect('/example');
+    page.redirect('/rules');
   });
 
   page({ hashbang: true });
