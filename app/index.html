@@ -31,6 +31,7 @@
           paper-tabs a {
             text-decoration:none;
             color: inherit;
+            font-size: 20px;
           }
 
           #page-collection{
@@ -44,16 +45,17 @@
           <div class="flex top"></div>
           <h1 class="top">Snagajob Table Tennis Federation</h1>
           <div class="flex top"></div>
-          <paper-tabs class="flex bottom">
-            <paper-tab link><a href="/matches" class="horizontal center-center layout">Matches</a></paper-tab>
-            <paper-tab link><a href="/rules" class="horizontal center-center layout">Rules</a></paper-tab>
-            <paper-tab link><a href="/live" class="horizontal center-center layout">Live</a></paper-tab>
-            <paper-tab link><a href="/roster" class="horizontal center-center layout">Roster</a></paper-tab>
+          <paper-tabs id="navigation" class="flex bottom" attr-for-selected="route">
+            <paper-tab link route="matches"><a href="/matches" class="horizontal center-center layout">Matches</a></paper-tab>
+            <paper-tab link route="rules"><a href="/rules" class="horizontal center-center layout">Rules</a></paper-tab>
+            <paper-tab link route="live"><a href="/live" class="horizontal center-center layout">Live</a></paper-tab>
+            <paper-tab link route="roster"><a href="/roster" class="horizontal center-center layout">Roster</a></paper-tab>
+            <paper-tab link route="join"><a href="/join" class="horizontal center-center layout">Join</a></paper-tab>
           </paper-tabs>
         </paper-toolbar>
         <iron-pages id="page-collection" selected="live" attr-for-selected="route">
           <div route="matches">
-            <aha-table id="matches-table" searchable pagesize="50"></aha-table>
+            <aha-table id="matches-table" searchable pagesize="20"></aha-table>
           </div>
           <div route="rules">
             This is where the rules would reside.
@@ -70,7 +72,10 @@
             </div>
           </div>
           <div route="roster">
-            <aha-table id="players-table" searchable pagesize="50"></aha-table>
+            <aha-table id="players-table" searchable pagesize="20"></aha-table>
+          </div>
+          <div route="join">
+            So you want to join? Well tough! We don't have a form yet.
           </div>
         </iron-pages>
       </paper-header-panel>

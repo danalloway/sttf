@@ -10,7 +10,7 @@
       if (hasFirebaseProperty && this.firebaseTableRendered)
       {
         console.log('Table already rendered. Avoiding second render.');
-        return;
+        return this;
       }
 
       // If we don't have that property, add it. Default to false.
@@ -42,6 +42,7 @@
       console.log('Starting Plugin Code');
       // Setup our firebase reference.
       var myFirebaseRef = new Firebase(settings.connectionString);
+      // We have to assign our 'this' scoped variable to another variable, due to scope change in method call back.
       var $table = this;
       // Bind to our firebase query.
       myFirebaseRef.child(settings.collectionName).once('value', function(snapshot){
@@ -57,5 +58,7 @@
         $table.get(0).data = dataArray;
         $table.firebaseTableRendered = true;
       });
+
+      return this;
     };
 }(jQuery));

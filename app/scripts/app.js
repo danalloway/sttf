@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  var app = document.querySelector('#page-collection');
+  var app = $('#page-collection');
+  var navbar = $('#navigation');
   var firebaseConString = "https://shining-torch-9613.firebaseio.com/";
 
   //ToDo: Remove this when we figure out timing.
@@ -12,6 +13,7 @@ $(document).ready(function(){
   page('/rules', rules);
   page('/live', live);
   page('/roster', roster);
+  page('/join', join);
 
   // Forward default requests to /rules
   page('/', function(){
@@ -23,19 +25,28 @@ $(document).ready(function(){
 
   // Define what happens on each route.
   function matches(){
-    app.select("matches");
+    app.get(0).select("matches");
+    navbar.get(0).select("matches");
   }
 
   function rules(){
-    app.select("rules");
+    app.get(0).select("rules");
+    navbar.get(0).select("rules");
   }
 
   function live(){
-    app.select("live");
+    app.get(0).select("live");
+    navbar.get(0).select("live");
   }
 
   function roster(){
-    app.select("roster");
+    app.get(0).select("roster");
+    navbar.get(0).select("roster");
+  }
+
+  function join(){
+    app.get(0).select('join');
+    navbar.get(0).select("join");
   }
 
   // Turn on request handling.
@@ -96,7 +107,7 @@ $(document).ready(function(){
         temp.push({
           first_name: player.firstName,
           nick_name: player.nickname,
-          last_name: player.lastName          
+          last_name: player.lastName
         });
       });
 
