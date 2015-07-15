@@ -1,9 +1,10 @@
 $(document).ready(function(){
   var app = document.querySelector('#page-collection');
+  var firebaseConString = "https://shining-torch-9613.firebaseio.com/";
 
   //ToDo: Remove this when we figure out timing.
   var userData = [];
-  var myFirebaseRef = new Firebase("https://shining-torch-9613.firebaseio.com/");
+  var myFirebaseRef = new Firebase(firebaseConString);
   //End remove.
 
   // Setup our route collection.
@@ -57,7 +58,7 @@ $(document).ready(function(){
 
   // Enable firebase table for matches.
   $('#matches-table').loadFirebaseTable({
-    connectionString: "https://shining-torch-9613.firebaseio.com/",
+    connectionString: firebaseConString,
     collectionName: "matches",
     getDataFunction: function(data){
       var temp = [];
@@ -79,6 +80,24 @@ $(document).ready(function(){
             game2: match.challenger_game2 + ' - ' + match.defender_game2,
             game3: match.challenger_game3 + ' - ' + match.defender_game3
           });
+      });
+
+      return temp;
+    }
+  });
+
+  $('#players-table').loadFirebaseTable({
+    connectionString: firebaseConString,
+    collectionName: "players",
+    getDataFunction: function(data){
+      var temp = [];
+
+      jQuery.each(data, function(index, player){
+        temp.push({
+          first_name: player.firstName,
+          nick_name: player.nickname,
+          last_name: player.lastName          
+        });
       });
 
       return temp;
