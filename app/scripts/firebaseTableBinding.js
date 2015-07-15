@@ -52,9 +52,6 @@
         // Call our format function to generate our table data array.
         var dataArray = settings.getDataFunction(data);
 
-        console.log('Data Array:');
-        console.log(dataArray);
-
         console.log('Setting Table Data');
         // Set the table data, mark that this table instance has been rendered.
         $table.get(0).data = dataArray;
