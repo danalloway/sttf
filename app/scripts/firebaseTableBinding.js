@@ -4,19 +4,13 @@
 */
 (function($) {
     $.fn.loadFirebaseTable = function(options) {
-      // Check if we have already rendered the table via firebaseTableRendered property.
-      var hasFirebaseProperty = this.hasOwnProperty('firebaseTableRendered');
-
-      if (hasFirebaseProperty && this.firebaseTableRendered)
+      // Check if we have already rendered the table via firebaseTableRendered data.
+      if (this.data('firebaseTableRendered'))
       {
         console.log('Table already rendered. Avoiding second render.');
         return this;
       }
 
-      // If we don't have that property, add it. Default to false.
-      if(!hasFirebaseProperty){
-        $.extend(this, { firebaseTableRendered: false });
-      }
 
       // Lets map our options. If we provide defaults, add them in here.
       var settings = $.extend({
@@ -56,7 +50,7 @@
         console.log('Setting Table Data');
         // Set the table data, mark that this table instance has been rendered.
         $table.get(0).data = dataArray;
-        $table.firebaseTableRendered = true;
+        $table.data('firebaseTableRendered', true);
       });
 
       return this;
