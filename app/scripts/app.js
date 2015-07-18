@@ -14,6 +14,7 @@ $(document).ready(function(){
   page('/live', live);
   page('/roster', roster);
   page('/join', join);
+  page('/register', register_form);
 
   // Forward default requests to /rules
   page('/', function(){
@@ -21,7 +22,7 @@ $(document).ready(function(){
   });
 
   // Enable hashbang mode.
-  page({ hashbang: true });
+  //page({ hashbang: true });
 
   // Define what happens on each route.
   function matches(){
@@ -49,8 +50,16 @@ $(document).ready(function(){
     navbar.get(0).select("join");
   }
 
+  function register_form(req){
+    console.log('Registration caught');
+    console.log(req.body);
+  }
+
   // Turn on request handling.
   page();
+
+  // Turn on Form Parser
+  pageBodyParser();
 
   //ToDo: Replace this piece.
   // populate player list
