@@ -8,7 +8,6 @@
         <meta http-equiv="cleartype" content="on">
         <script type="text/javascript" src="/bower_components/webcomponentsjs/webcomponents.min.js"></script>
         <script type="text/javascript" src="/bower_components/page.js/page.js"></script>
-        <script type="text/javascript" src="/bower_components/page.js-body-parser.js/page.js-body-parser.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -17,7 +16,6 @@
         <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
         <link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
         <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
-        <link rel="import" href="/bower_components/aha-table/dist/aha-table.html">
         <link rel="import" href="/bower_components/iron-form/iron-form.html">
         <link rel="import" href="/bower_components/paper-button/paper-button.html">
         <link rel="import" href="/bower_components/paper-input/paper-input.html">
@@ -43,14 +41,6 @@
             padding-top: 10px;
           }
         </style>
-        <script>
-          function submitRegistration() {
-            console.log('Submit method called');
-            var $form = $('#registration-form');
-            console.log($form);
-            $form.get(0).submit();
-          }
-        </script>
     </head>
     <body class="fullbleed layout vertical">
       <paper-header-panel class="flex">
@@ -67,8 +57,7 @@
           </paper-tabs>
         </paper-toolbar>
         <iron-pages id="page-collection" selected="live" attr-for-selected="route">
-          <div route="matches">
-            <aha-table id="matches-table" searchable pagesize="20"></aha-table>
+          <div route="matches" id="matches-page">
           </div>
           <div route="rules">
             This is where the rules would reside.
@@ -84,18 +73,9 @@
               </div>
             </div>
           </div>
-          <div route="roster">
-            <aha-table id="players-table" searchable pagesize="20"></aha-table>
+          <div route="roster" id="roster-page">
           </div>
-          <div route="join">
-            <h2>New Registration Form</h2>
-            <form is="iron-form" id="registration-form" method="post" action="register">
-              <paper-input name="first_name" label="First Name"></paper-input>
-              <paper-input name="nick_name" label="Nick Name"></paper-input>
-              <paper-input name="last_name" label="Last Name"></paper-input>
-              <paper-input name="email" label="Email Address"></paper-input>
-              <paper-button onclick="submitRegistration()">Submit Registration</paper-button>
-            </form>
+          <div route="join" id="join-page">
           </div>
         </iron-pages>
       </paper-header-panel>
