@@ -17,7 +17,6 @@
     "iron-elements": "PolymerElements/iron-elements#~1.0.0",
     "paper-elements": "PolymerElements/paper-elements#~1.0.1",
     "page.js": "~1.6.3",
-    "aha-table": "~2.0.5",
-    "page.js-body-parser.js": "~1.0.8"
+    "aha-table": "~2.0.5"
   }
 }
