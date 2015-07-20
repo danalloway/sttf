@@ -1,0 +1,22 @@
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+
+<script type="text/javascript" src="/scripts/firebaseTableBinding.js"></script>
+<script type="text/javascript" src="/scripts/registration.js"></script>
+
+<h2>New Registration Form</h2>
+<form is="iron-form" id="registration-form" method="post" action="register" class="layout vertical flex">
+  <paper-input name="first_name" label="First Name" error-message="Alphabetical characters only." required pattern="[a-zA-Z]*"></paper-input>
+  <paper-input name="nick_name" label="Nick Name" required></paper-input>
+  <paper-input name="last_name" label="Last Name" required error-message="Alphabetical characters only." pattern="[a-zA-Z]*"></paper-input>
+  <paper-input name="email" label="Email Address" required></paper-input>
+  <div class="layout horizontal">
+    <paper-button onclick="clearRegistration()">Clear Form</paper-button>
+    <div class="flex"></div>
+    <paper-button onclick="submitRegistration()">Submit Registration</paper-button>
+  </div>
+</form>
+
+<paper-toast id="player-added" text="User added to database."></paper-toast>

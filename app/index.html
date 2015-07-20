@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="cleartype" content="on">
         <script type="text/javascript" src="/bower_components/webcomponentsjs/webcomponents.min.js"></script>
-        <script type="text/javascript" src="/bower_components/page/page.js"></script>
+        <script type="text/javascript" src="/bower_components/page.js/page.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -16,7 +16,6 @@
         <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
         <link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
         <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
-        <link rel="import" href="/bower_components/aha-table/dist/aha-table.html">
 
         <style>
           body,html {
@@ -31,6 +30,7 @@
           paper-tabs a {
             text-decoration:none;
             color: inherit;
+            font-size: 20px;
           }
 
           #page-collection{
@@ -44,16 +44,17 @@
           <div class="flex top"></div>
           <h1 class="top">Snagajob Table Tennis Federation</h1>
           <div class="flex top"></div>
-          <paper-tabs class="flex bottom">
-            <paper-tab link><a href="/matches" class="horizontal center-center layout">Matches</a></paper-tab>
-            <paper-tab link><a href="/rules" class="horizontal center-center layout">Rules</a></paper-tab>
-            <paper-tab link><a href="/live" class="horizontal center-center layout">Live</a></paper-tab>
-            <paper-tab link><a href="/roster" class="horizontal center-center layout">Roster</a></paper-tab>
+          <paper-tabs id="navigation" class="flex bottom" attr-for-selected="route">
+            <paper-tab link route="rules"><a href="/rules" class="horizontal center-center layout">Rules</a></paper-tab>
+            <paper-tab link route="roster"><a href="/roster" class="horizontal center-center layout">Roster</a></paper-tab>
+            <paper-tab link route="join"><a href="/join" class="horizontal center-center layout">Join</a></paper-tab>
+            <paper-tab link route="live"><a href="/live" class="horizontal center-center layout">Live</a></paper-tab>
+            <paper-tab link route="record-match"><a href="/record-match" class="horizontal center-center layout">Record Match</a></paper-tab>
+            <paper-tab link route="match-history"><a href="/match-history" class="horizontal center-center layout">Match History</a></paper-tab>
           </paper-tabs>
         </paper-toolbar>
         <iron-pages id="page-collection" selected="live" attr-for-selected="route">
-          <div route="matches">
-            <aha-table id="matches-table" searchable pagesize="50"></aha-table>
+          <div route="match-history" id="match-history-page">
           </div>
           <div route="rules">
             This is where the rules would reside.
@@ -67,48 +68,17 @@
                 <div style="font-size: 12px;">Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.</div>
                 <div style="font-size: 12px;">Ut labores minimum atomorum pro. Laudem tibique ut has.</div>
               </div>
-              <div style="border: 1px solid #bebebe; padding: 16px; margin: 16px; border-radius: 5px; background-color: #fff; color: #555;">
-                <div style="display: inline-block; height: 64px; width: 64px; border-radius: 50%; background: #ddd; line-height: 64px; font-size: 30px; color: #666; text-align: center;">Z</div>
-                <div style="font-size: 22px; padding: 8px 0 16px; color: #888;">Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.</div>
-                <div style="font-size: 16px; padding-bottom: 8px;">Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.</div>
-                <div style="font-size: 12px;">Ut labores minimum atomorum pro. Laudem tibique ut has.</div>
-                <div style="font-size: 12px;">Ut labores minimum atomorum pro. Laudem tibique ut has.</div>
-              </div>
-              <div style="border: 1px solid #bebebe; padding: 16px; margin: 16px; border-radius: 5px; background-color: #fff; color: #555;">
-                <div style="display: inline-block; height: 64px; width: 64px; border-radius: 50%; background: #ddd; line-height: 64px; font-size: 30px; color: #666; text-align: center;">G</div>
-                <div style="font-size: 22px; padding: 8px 0 16px; color: #888;">Id nam odio natum malorum, tibique copiosae expetenda mel ea.</div>
-                <div style="font-size: 16px; padding-bottom: 8px;">Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.</div>
-                <div style="font-size: 12px;">Usu eu novum principes, vel quodsi aliquip ea.</div>
-                <div style="font-size: 12px;">Convenire definiebas scriptorem eu cum. Sit dolor dicunt consectetuer no.</div>
-              </div>
-              <div style="border: 1px solid #bebebe; padding: 16px; margin: 16px; border-radius: 5px; background-color: #fff; color: #555;">
-                <div style="display: inline-block; height: 64px; width: 64px; border-radius: 50%; background: #ddd; line-height: 64px; font-size: 30px; color: #666; text-align: center;">S</div>
-                <div style="font-size: 22px; padding: 8px 0 16px; color: #888;">Fugit adolescens vis et, ei graeci forensibus sed.</div>
-                <div style="font-size: 16px; padding-bottom: 8px;">Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.</div>
-                <div style="font-size: 12px;">No nam ipsum lorem aliquip, accumsan quaerendum ei usu.</div>
-                <div style="font-size: 12px;">Ea duis bonorum nec, falli paulo aliquid ei eum.</div>
-              </div>
-              <div style="border: 1px solid #bebebe; padding: 16px; margin: 16px; border-radius: 5px; background-color: #fff; color: #555;">
-                <div style="display: inline-block; height: 64px; width: 64px; border-radius: 50%; background: #ddd; line-height: 64px; font-size: 30px; color: #666; text-align: center;">R</div>
-                <div style="font-size: 22px; padding: 8px 0 16px; color: #888;">Ut labores minimum atomorum pro. Laudem tibique ut has.</div>
-                <div style="font-size: 16px; padding-bottom: 8px;">Pro saepe pertinax ei, ad pri animal labores suscipiantur.</div>
-                <div style="font-size: 12px;">Has at minim mucius aliquam, est id tempor laoreet.</div>
-                <div style="font-size: 12px;">Ut labores minimum atomorum pro. Laudem tibique ut has.</div>
-              </div>
-              <div style="border: 1px solid #bebebe; padding: 16px; margin: 16px; border-radius: 5px; background-color: #fff; color: #555;">
-                <div style="display: inline-block; height: 64px; width: 64px; border-radius: 50%; background: #ddd; line-height: 64px; font-size: 30px; color: #666; text-align: center;">E</div>
-                <div style="font-size: 22px; padding: 8px 0 16px; color: #888;">No nam ipsum lorem aliquip, accumsan quaerendum ei usu.</div>
-                <div style="font-size: 16px; padding-bottom: 8px;">Convenire definiebas scriptorem eu cum. Sit dolor dicunt consectetuer no.</div>
-                <div style="font-size: 12px;">Pro saepe pertinax ei, ad pri animal labores suscipiantur.</div>
-                <div style="font-size: 12px;">Cu mei vide viris gloriatur, at populo eripuit sit.</div>
-              </div>
             </div>
           </div>
-          <div route="roster">
-            sThis is something else!
+          <div route="roster" id="roster-page">
+          </div>
+          <div route="join" id="join-page">
+          </div>
+          <div route="record-match" id="record-match-page">
           </div>
         </iron-pages>
       </paper-header-panel>
+      <script type="text/javascript" src="/scripts/firebaseTableBinding.js"></script>
       <script type="text/javascript" src="/scripts/app.js"></script>
     </body>
 </html>

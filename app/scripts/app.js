@@ -1,115 +1,68 @@
-var matchesTableRendered = false;
-(function(){
-  var app = document.querySelector('#page-collection');
-  var matchesTable = document.querySelector('#matches-table');
-  var myFirebaseRef = new Firebase("https://shining-torch-9613.firebaseio.com/");
-  var userData = [];
-  var matchData = [];
+$(document).ready(function(){
+  var app = $('#page-collection');
+  var navbar = $('#navigation');
 
-  // populate player list
-  myFirebaseRef.child('players').once('value', function(snapshot){
-    var data = snapshot.val();
-    jQuery.each(data, function(index, user){
-      userData.push({
-        id: user._id.oid,
-        first: user.firstName,
-        last: user.lastName,
-        nick: user.nickname
-      });
-    });
-
-    console.log(userData);
-    displayMatches(userData, matchData, matchesTable);
-  });
-
-  // Some Firebase Binding
-  myFirebaseRef.child('matches').once('value', function(snapshot){
-    var data = snapshot.val();
-    jQuery.each(data, function(index, match){
-      matchData.push({
-          type: match.match_type,
-          game1: match.challenger_game1 + ' - ' + match.defender_game1,
-          game2: match.challenger_game2 + ' - ' + match.defender_game2,
-          game3: match.challenger_game3 + ' - ' + match.defender_game3,
-          challengerId: match.challenger.oid,
-          defenderId: match.defender.oid
-        });
-    });
-
-    console.log(matchData);
-    displayMatches(userData, matchData, matchesTable);
-  });
-
-  // Routes
-  page('/matches', matches);
+  // Setup our route collection.
+  page('/match-history', matchHistory);
   page('/rules', rules);
   page('/live', live);
   page('/roster', roster);
+  page('/join', join);
+  page('/record-match', recordMatch);
+
+  // Forward default requests to /rules
   page('/', function(){
     page.redirect('/rules');
   });
 
-  page({ hashbang: true });
+  // Enable hashbang mode.
+  //page({ hashbang: true });
 
-  function matches(){
-    app.select("matches");
+  // Define what happens on each route.
+  function matchHistory(){
+    loadViewToElement('#match-history-page', 'match-history.html');
+    app.get(0).select("match-history");
+    navbar.get(0).select("match-history");
   }
 
   function rules(){
-    app.select("rules");
+    app.get(0).select("rules");
+    navbar.get(0).select("rules");
   }
 
   function live(){
-    app.select("live");
+    app.get(0).select("live");
+    navbar.get(0).select("live");
   }
 
   function roster(){
-    app.select("roster");
+    loadViewToElement('#roster-page', 'roster.html');
+
+    app.get(0).select("roster");
+    navbar.get(0).select("roster");
   }
 
+  function join(){
+    loadViewToElement('#join-page', 'registration.html');
+
+    app.get(0).select('join');
+    navbar.get(0).select("join");
+  }
+
+  function recordMatch(){
+    loadViewToElement('#record-match-page', 'record-match.html');
+
+    app.get(0).select('record-match');
+    navbar.get(0).select('record-match');
+  }
+
+  // Turn on request handling.
   page();
-})();
+});
 
-// Renders the match table if it hasn't been rendered yet.
-function displayMatches(userData, matchData, matchesTable){
-  if(matchData == null || matchData.length <= 0 || userData == null || userData.length <= 0 || matchesTable == null || matchesTableRendered == true)
-  {
-    return;
+function loadViewToElement(selector, viewName){
+  if ($(selector).children().length < 1){
+    console.log('Loading ' + viewName);
+    $(selector).load('/views/' + viewName);
   }
-
-  var tableData = [];
-
-  jQuery.each(matchData, function(index, match){
-    var challenger = jQuery.grep(userData, function(user, index){
-      return user.id == match.challengerId;
-    })[0];
-
-    var defender = jQuery.grep(userData, function(user, index){
-      return user.id == match.defenderId;
-    })[0];
-
-    tableData.push({
-      type:match.type,
-      challenger: challenger.first + ' ' + challenger.nick + ' ' + challenger.last,
-      defender: defender.first + ' '  + defender.nick + ' ' + defender.last,
-      game1: match.game1,
-      game2: match.game2,
-      game3: match.game3
-    });
-  });
-
-  console.log(tableData);
-
-  matchesTable.data = tableData;
-  matchesTableRendered = true;
 }
-
-
-// listen for when Polymer has finished parsing and is ready to roll
-//window.addEventListener('WebComponentsReady', function() {
-
-    // remove the `unresolved` attribute and fade in the app
-    // this prevents any FOUC from occuring
-    //document.querySelector('body').removeAttribute('unresolved');
-
-//});
