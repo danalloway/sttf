@@ -33,3 +33,8 @@ function submitRegistration() {
 
   $form.submit();
 };
+
+// This is here so we can submit the form. Required due to custom submit button.
+function clearRegistration() {
+  $('#registration-form').get(0).reset();
+};

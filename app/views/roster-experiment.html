@@ -1,0 +1,21 @@
+<link rel="import" href="/bower_components/firebase-element/firebase-collection.html">
+
+<template is="dom-bind">
+  <firebase-collection
+      location="https://shining-torch-9613.firebaseio.com/test-users"
+      data="{{players}}"></firebase-collection>
+  <table>
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Nick Name</td>
+    </tr>
+    <template is="dom-repeat" items="[[players]]">
+      <tr>
+        <td>[[item.firstName]]</td>
+        <td>[[item.lastName]]</td>
+        <td>[[item.nickName]]</td>
+      </tr>
+    </template>
+  </table>
+</template>

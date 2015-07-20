@@ -3,11 +3,12 @@ $(document).ready(function(){
   var navbar = $('#navigation');
 
   // Setup our route collection.
-  page('/matches', matches);
+  page('/match-history', matchHistory);
   page('/rules', rules);
   page('/live', live);
   page('/roster', roster);
   page('/join', join);
+  page('/record-match', recordMatch);
 
   // Forward default requests to /rules
   page('/', function(){
@@ -18,10 +19,10 @@ $(document).ready(function(){
   //page({ hashbang: true });
 
   // Define what happens on each route.
-  function matches(){
-    loadViewToElement('#matches-page', 'matches.html');
-    app.get(0).select("matches");
-    navbar.get(0).select("matches");
+  function matchHistory(){
+    loadViewToElement('#match-history-page', 'match-history.html');
+    app.get(0).select("match-history");
+    navbar.get(0).select("match-history");
   }
 
   function rules(){
@@ -46,6 +47,13 @@ $(document).ready(function(){
 
     app.get(0).select('join');
     navbar.get(0).select("join");
+  }
+
+  function recordMatch(){
+    loadViewToElement('#record-match-page', 'record-match.html');
+
+    app.get(0).select('record-match');
+    navbar.get(0).select('record-match');
   }
 
   // Turn on request handling.
