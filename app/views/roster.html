@@ -3,5 +3,9 @@
 <script type="text/javascript" src="/scripts/firebaseTableBinding.js"></script>
 <script type="text/javascript" src="/scripts/roster.js"></script>
 
-<aha-table id="players-table" searchable pagesize="20"></aha-table>
+<aha-table id="players-table" searchable pagesize="20">
+  <aha-column name="first_name" label="First Name"></aha-column>
+  <aha-column name="nick_name" label="Nick Name"></aha-column>
+  <aha-column name="last_name" label="Last Name"></aha-column>
+</aha-table>
 <paper-button onclick="refreshPlayersTable()">Refresh</paper-button>

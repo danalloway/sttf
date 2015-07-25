@@ -8,14 +8,14 @@
 
   //ToDo: Replace this piece.
   // populate player list
-  myFirebaseRef.child('players').once('value', function(snapshot){
+  myFirebaseRef.child('members').once('value', function(snapshot){
     var data = snapshot.val();
     jQuery.each(data, function(index, user){
       userData.push({
-        id: user._id.oid,
+        id: index,
         first: user.firstName,
         last: user.lastName,
-        nick: user.nickname
+        nick: user.nickName
       });
     });
   });
@@ -24,26 +24,38 @@
   // Enable firebase table for matches.
   $('#matches-table').loadFirebaseTable({
     connectionString: firebaseConString,
-    collectionName: "matches",
+    collectionName: "match-histories",
     getDataFunction: function(data){
       var temp = [];
 
       jQuery.each(data, function(index, match){
           var challenger = jQuery.grep(userData, function(user, index){
-            return user.id == match.challenger.oid;
+            return user.id == match.challenger;
           })[0];
 
           var defender = jQuery.grep(userData, function(user, index){
-            return user.id == match.defender.oid;
+            return user.id == match.defender;
+          })[0];
+
+          var game1 = jQuery.grep(match.games, function(game, index){
+            return game.gameNumber == 1;
+          })[0];
+
+          var game2 = jQuery.grep(match.games, function(game, index){
+            return game.gameNumber == 2;
+          })[0];
+
+          var game3 = jQuery.grep(match.games, function(game, index){
+            return game.gameNumber == 3;
           })[0];
 
           temp.push({
-            type:match.match_type,
+            type:match.matchType,
             challenger: challenger.first + ' ' + challenger.nick + ' ' + challenger.last,
             defender: defender.first + ' '  + defender.nick + ' ' + defender.last,
-            game1: match.challenger_game1 + ' - ' + match.defender_game1,
-            game2: match.challenger_game2 + ' - ' + match.defender_game2,
-            game3: match.challenger_game3 + ' - ' + match.defender_game3
+            game1: game1.challengerScore + ' - ' + game1.defenderScore,
+            game2: game2.challengerScore + ' - ' + game2.defenderScore,
+            game3: game3.challengerScore + ' - ' + game3.defenderScore
           });
       });
 

@@ -16,7 +16,7 @@
       email: $.grep(form_data, function(field){ return field.name == 'email' })[0].value
     };
 
-    myFirebaseRef.child('test-users').push(obj);
+    myFirebaseRef.child('members').push(obj);
 
     e.preventDefault();
     this.reset();
